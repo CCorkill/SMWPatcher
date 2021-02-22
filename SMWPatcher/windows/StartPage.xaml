@@ -1,0 +1,30 @@
+﻿<Window x:Class="SMWPatcher.windows.StartPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SMWPatcher.windows"
+        mc:Ignorable="d"
+        Title="SMW Patcher" ResizeMode="NoResize" Height="434.183" Width="358">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <!-- Title -->
+        <TextBlock TextWrapping="Wrap" Text="SMW Patcher" HorizontalAlignment="Left" VerticalAlignment="Top" Height="41" Width="252" FontSize="30" TextAlignment="Center" Margin="58,0,0,0"/>
+
+        <!-- Logo -->
+        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center" Height="156" VerticalAlignment="Top" Width="152" Margin="100,1,100,0" Grid.Row="1"/>
+        <Image Height="148" HorizontalAlignment="Left" VerticalAlignment="Top" Source="logo.png" Margin="104,5,0,0" Grid.Row="1"/>
+
+        <!-- Buttons -->
+        <Button x:Name="startButton" Content="Start" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="25" Margin="145,184,0,0" FontSize="16" Click="Button_Click" Grid.Row="1"/>
+        <Button x:Name="settingsButton" Content="Settings" HorizontalAlignment="Left" Margin="145,230,0,0" VerticalAlignment="Top" Width="89" Height="27" FontSize="16" Grid.Row="1" Click="Button_Click_1"/>
+        <Button x:Name="exitButton" Content="Exit" HorizontalAlignment="Left" Margin="145,275,0,0" VerticalAlignment="Top" Width="89" Height="25" FontSize="16" Grid.Row="1" Click="exitButton_Click"/>
+
+        <!-- Created by... -->
+        <TextBlock TextWrapping="Wrap" Text="Created by CCoolant" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="37" Margin="126,0,0,0" RenderTransformOrigin="0.98,-1.625" Grid.Row="1"/>
+
+    </Grid>
+</Window>

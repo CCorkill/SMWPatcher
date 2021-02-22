@@ -1,0 +1,25 @@
+﻿<Window x:Class="SMWPatcher.windows.SettingsPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SMWPatcher.windows"
+        mc:Ignorable="d"
+        Title="SMW Patcher" Height="222.515" Width="519.788">
+    <Grid>
+        <!-- SMW ROM Location -->
+        <Label Content="Super Mario World ROM Location:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="234" Height="29"/>
+        <TextBox x:Name="romLocation" HorizontalAlignment="Left" Height="19" Margin="10,44,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="366" MaxLines="1" IsReadOnly="true"/>
+        <Button x:Name="locationBrowse" Content="Browse" HorizontalAlignment="Left" Margin="411,44,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="Button_Click"/>
+
+        <!-- ROM Destination -->
+        <Label Content="Patched ROM Destination:" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Width="234" Height="29"/>
+        <TextBox x:Name="romDestination" HorizontalAlignment="Left" Height="19" Margin="10,102,0,0" TextWrapping="NoWrap" Text=" " VerticalAlignment="Top" Width="366" MaxLines="1" IsReadOnly="true"/>
+        <Button x:Name="destinationBrowse" Content="Browse" HorizontalAlignment="Left" Margin="411,102,0,0" VerticalAlignment="Top" Width="75" Click="destinationBrowse_Click"/>
+
+        <!-- OK/Cancel Buttons -->
+        <Button x:Name="settingsOkButton" Content="OK" HorizontalAlignment="Left" Margin="160,148,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.107,0.2" Click="settingsOkButton_Click"/>
+        <Button x:Name="cancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="270,148,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.267,0.4" Click="cancelButton_Click"/>
+
+    </Grid>
+</Window>
