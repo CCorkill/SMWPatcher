@@ -25,7 +25,7 @@ namespace SMWPatcher.windows
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string[] config = new string[2];
-            config = System.IO.File.ReadAllLines("config.txt");
+            config = System.IO.File.ReadAllLines("./resources/config.txt");
             for (int i = 0; i < 2; i++)
             {
                 string[] configSplit = config[i].Split('"');

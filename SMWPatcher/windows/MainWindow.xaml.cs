@@ -130,7 +130,7 @@ namespace SMWPatcher
 
             //Opens flips.exe, the patcher
             ProcessStartInfo info = new ProcessStartInfo();
-            info.FileName = "flips.exe";
+            info.FileName = "./resources/flips.exe";
             info.UseShellExecute = false;
             info.CreateNoWindow = true;
             Process p = Process.Start(info);
@@ -212,7 +212,7 @@ namespace SMWPatcher
         private void LoadConfig()
         {
             string[] config = new string[2];
-            config = System.IO.File.ReadAllLines("config.txt");
+            config = System.IO.File.ReadAllLines("./resources/config.txt");
             for (int i = 0; i < 2; i++)
             {
                 string[] configSplit = config[i].Split('"');
@@ -310,7 +310,7 @@ namespace SMWPatcher
             newHacks.AddRange(cache);
 
             string jsonString = JsonSerializer.Serialize(newHacks);
-            System.IO.File.WriteAllText("cache.json", jsonString);
+            System.IO.File.WriteAllText("./resources/cache.json", jsonString);
 
             LoadCache();
         }
@@ -373,12 +373,12 @@ namespace SMWPatcher
             }
 
             string jsonString = JsonSerializer.Serialize(hackList);
-            System.IO.File.WriteAllText("cache.json", jsonString);
+            System.IO.File.WriteAllText("./resources/cache.json", jsonString);
         }
 
         private void LoadCache()
         {
-            string jsonString = System.IO.File.ReadAllText("cache.json");
+            string jsonString = System.IO.File.ReadAllText("./resources/cache.json");
             cache = JsonSerializer.Deserialize<List<html.HackInfo>>(jsonString);
         }
 

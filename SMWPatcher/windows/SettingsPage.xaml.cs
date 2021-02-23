@@ -22,14 +22,14 @@ namespace SMWPatcher.windows
             //Loads information from the config file upon startup
             string[] config = new string[2];
 
-            if (System.IO.File.Exists("config.txt"))
+            if (System.IO.File.Exists("./resources/config.txt"))
             {
                 config = ParseConfig(config);
             }
             else
             {
                 string[] defaultConfig = { "romlocation:\"\"", "romdestination:\"\"" };
-                System.IO.File.WriteAllLines("config.txt", defaultConfig);
+                System.IO.File.WriteAllLines("./resources/config.txt", defaultConfig);
             }
             InitializeComponent();
             romLocation.Text = config[0];
@@ -79,7 +79,7 @@ namespace SMWPatcher.windows
             config[0] = "romlocation:\"" + romLocation.Text + "\"";
             config[1] = "romdestination:\"" + romDestination.Text + "\"";
 
-            System.IO.File.WriteAllLines("config.txt", config);
+            System.IO.File.WriteAllLines("./resources/config.txt", config);
 
             //Close window
             this.Close();
@@ -95,7 +95,7 @@ namespace SMWPatcher.windows
         //Helper function for parsing the config file
         string[] ParseConfig(string[] config)
         {
-            config = System.IO.File.ReadAllLines("config.txt");
+            config = System.IO.File.ReadAllLines("./resources/config.txt");
 
             //Loop extracts the contents of the rom location and destination lines
             for(int i = 0; i < 2; i++)
