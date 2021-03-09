@@ -50,6 +50,7 @@ namespace SMWPatcher
         {
             //Do NOT use GenerateCache() unless absolutely necessary
             //GenerateCache()
+            html.HtmlParser parser = new html.HtmlParser();
             InitializeComponent();
             LoadCache();
             UpdateCache();

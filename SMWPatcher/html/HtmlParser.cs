@@ -10,6 +10,8 @@ using System.Net.Http.Headers;
 using System.Net;
 using System.IO;
 using System.Text.RegularExpressions;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
 namespace SMWPatcher.html
 {
@@ -23,37 +25,6 @@ namespace SMWPatcher.html
             string result = content.ReadAsStringAsync().Result;
             return result;
         }
-        
-        /*
-        //Parses information from the SMW Hack directory and places it into the HackList object (hack urls and titles)
-        public HackList ParseList(string url)
-        {
-            HackList list = new HackList();
-
-            string response = CallUrl(url);
-
-            //Generate HTML doc from URL and parse only sections containing hack links
-            HtmlDocument htmlDoc = new HtmlDocument();
-            htmlDoc.LoadHtml(response);
-            var hackURLs = htmlDoc.DocumentNode.Descendants("a")
-                //Checks that the link is not from a Tip section of the page
-                .Where(node => !node.ParentNode.GetAttributeValue("class", "").Contains("rope"))
-                //Grabs urls of hacks based on their url containing "details"
-                .Where(node => node.GetAttributeValue("href", "").Contains("details"))
-                //Checks that smwcentral is not contained
-                .Where(node => !node.GetAttributeValue("href", "").Contains("smwcentral"));
-
-            //Add URLs to hacks and the names of hacks into HackList object
-            foreach(var hackURL in hackURLs)
-            {
-                list.urls.Add("https://www.smwcentral.net" + WebUtility.HtmlDecode(hackURL.GetAttributeValue("href", "")));
-                list.titles.Add(WebUtility.HtmlDecode(hackURL.InnerText));
-            }
-
-            //Return the HackList
-            return list;
-        }
-        */
 
         //Assembles all hack information one function at a time
         public HackInfo ParseInfo(string url)
@@ -104,14 +75,42 @@ namespace SMWPatcher.html
             return childNodes;
         }
 
-        List<string> GetScreenshots(string url)
+        //Wasn't able to get this working cleanly
+        /*
+        public List<string> GetScreenshots(string url)
         {
             List<string> screenshots = new List<string>();
+
+            IWebDriver driver;
+
+            var chromeOptions = new ChromeOptions();
+            chromeOptions.AddArguments("headless");
+            driver = new ChromeDriver(chromeOptions);
+            driver.Url = url;
+
+            var listContainer = driver.FindElements(By.XPath("//*[@id=\"screenshotListContainer\"]/*"));
+            driver.FindElements(By.XPath("//*[@id=\"screenshotContainer\"]"));
+            
+            string[] protocols = { "TLSv1.2", "TLSv1.1", "TLSv1" };
+
+            NHtmlUnit.WebClient client = new NHtmlUnit.WebClient();
+            client.Options.UseInsecureSsl = true;
+            client.Options.SSLClientProtocols = protocols;
+            client.Options.JavaScriptEnabled = true;
+
+            NHtmlUnit.Html.HtmlPage page = client.GetHtmlPage(url);
+
+            java.net.URL requestURL = new java.net.URL(url);
+            NHtmlUnit.WebRequest webRequest = new NHtmlUnit.WebRequest(requestURL);
+            NHtmlUnit.WebResponse response = client.LoadWebResponse(webRequest);
+            string wait = "";
+
 
             //Never got this working
 
             return screenshots;
         }
+        */
         float GetRating(HtmlDocument htmlDoc)
         {
             float rating = 0;
